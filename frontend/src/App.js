@@ -1,11 +1,35 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import { db, auth } from './firebase';
 
 function App() {
+  // Example of accessing Firebase Firestore
+  React.useEffect(() => {
+    const fetchData = async () => {
+      const data = await db.collection('incidents').get();
+      console.log(data.docs.map(doc => doc.data()));
+    };
+    fetchData();
+  }, []);
+
+  // Example of accessing Firebase Authentication
+  React.useEffect(() => {
+    const checkAuth = () => {
+      auth.onAuthStateChanged(user => {
+        if (user) {
+          console.log('User is logged in:', user.uid);
+        } else {
+          console.log('User is logged out');
+        }
+      });
+    };
+    checkAuth();
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <h1>Neighborhood Safety App</h1>
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
@@ -23,3 +47,4 @@ function App() {
 }
 
 export default App;
+
