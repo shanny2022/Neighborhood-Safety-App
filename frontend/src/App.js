@@ -31,7 +31,7 @@ function App() {
       <header className="App-header">
         <h1>Neighborhood Safety App</h1>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+        Empowering <code>Communities</code> for Safer Living!
         </p>
         <a
           className="App-link"
@@ -47,4 +47,3 @@ function App() {
 }
 
 export default App;
-
